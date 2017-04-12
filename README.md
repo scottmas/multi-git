@@ -56,7 +56,7 @@ This file must be named `.mg-config.json` and be in `json` format.
         },
         "repo2": {
             "name": "repo2",
-            "path": "/home/ubuntu/workspace/repos/repo2"
+            "path": "./repos/repo2"
         },
         "repo3": {
             "name": "repo3",
@@ -82,7 +82,7 @@ This file must be named `.mg-config.json` and be in `json` format.
 }
 ````
 
-* Paths must be absolute
+* Non absolute paths are resolved relative to the current working directory 
 * Paths can contain ~
 * A project can belong to multiple groups
 

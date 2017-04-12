@@ -43,7 +43,14 @@ export default class Manager {
                     return fs.readFileAsync(configFilePath);
                 })
                 .then((buffer) => {
-                    this.config = JSON.parse(buffer.toString());
+                    const config = JSON.parse(buffer.toString());
+
+                    // Normalize all paths in the config object
+                    Object.keys(config.projects).forEach(repo => {
+                      config.projects[repo].path = path.resolve(config.projects[repo].path);
+                    });
+
+                    this.config = config;
                     return this.config;
                 });
         } else {
